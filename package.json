@@ -7,14 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install",
-    "lint-fix": "eslint '**/*.{ts,tsx}' --ext .ts,.tsx --fix",
-    "lint-staged": "lint-staged"
+    "precommit": "lint-staged",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
       "eslint --fix",
-      "prettier --write"
+      "prettier --config ./.prettierrc.js --write"
     ]
   },
   "dependencies": {
@@ -38,6 +37,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "typescript": "^5"
   }

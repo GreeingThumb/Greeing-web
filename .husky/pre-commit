@@ -1,4 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
+# dirname -- "$0": $0는 현재 스크립트의 경로를 나타내는 특수 변수입니다. dirname 은 주어진 경로의 디렉토리 부분만 추출합니다. 따라서 이 부분은 현재 스크립트의 위치한 디렉토리를 반환합니다.
+#"/_/husky.sh": 위에서 얻은 디렉토리 경로에 /_/husky.sh를 추가하여 husky.sh 스크립트의 전체 경로를 구성합니다.
+#. "some_script.sh": 주어진 스크립트를 현재 쉘에서 source 합니다. 즉, 해당 스크립트를 현재 쉘에서 실행하게 됩니다. 여기서는 husky.sh 스크립트를 실행하게 됩니다.
 
-echo Running pre-commit hook && npm run lint-fix 
+npm run precommit
+# npm(Node Package Manager)를 사용하여 precommit 스크립트를 실행합니다. 이 스크립트는 일반적으로 프로젝트의 package.json 파일 안에 정의되어 있습니다. 스크립트는 commit 전에 실행되어야 할 작업들(예: 코드 포맷팅, 린트 체크 등)을 수행합니다.
+# 요약하자면, 이 스크립트는 git commit 을 수행하기 전에, husky 도구와 함께 특정 작업(여기서는 precommit 스크립트)을 자동으로 수행하도록 하는 목적으로 작성되었습니다.
+
+# 1. 커밋을 시도할 때 pre-commit hook 이 트리거됩니다.
+# 2. pre-commit hook 의 스크립트는 먼저 husky.sh 스크립트를 실행하여 husky 초기화 로직을 처리합니다.
+# 3. 초기화 로직이 끝나면 실제 pre-commit 작업, 즉 npm run precommit 명령이 실행됩니다. 이 명령은 package.json 파일의 scripts 섹션에 precommit 으로 정의된 명령을 실행하는 것입니다 (예: linting, testing 등).
+# 따라서 npm run precommit 명령은 실제로 git 커밋 전에 원하는 작업을 수행하기 위한 것입니다.
