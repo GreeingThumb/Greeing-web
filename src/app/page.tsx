@@ -1,6 +1,6 @@
-import { Button } from '@/shared/components/Button'
+import { Button } from '@/shared/components/button'
 import * as styles from './page.css'
-import Footer from '@/widgets/footer/ui'
+import Footer from '@/widgets/footer'
 
 export default function Home() {
   return (
