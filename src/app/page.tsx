@@ -1,4 +1,4 @@
-import { Button } from '@/shared/components/button'
+import { Button } from '@/shared/components/Button'
 import * as styles from './page.css'
 import Footer from '@/widgets/footer'
 
