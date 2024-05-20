@@ -1,4 +1,5 @@
-import '../shared/styles/globalStyle.css'
+import '@/shared/styles/globalStyle.css'
+import * as styles from './layout.css'
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import QueryProvider from './_providers/query-provider'
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body>
+      <body className={styles.body}>
         <NextTopLoader height={2} showSpinner={false} color="#000" />
         <QueryProvider>{children}</QueryProvider>
         <Suspense fallback={<span>loading</span>}></Suspense>
