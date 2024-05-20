@@ -19,7 +19,7 @@ module.exports = {
       version: 'detect',
     },
   },
-  ignorePatterns: ['/*', '!/src'],
+  ignorePatterns: ['/*', '!/src', '/src/entities/**/*'],
   rules: {
     'no-console': 'warn',
     'react/react-in-jsx-scope': 'off',
@@ -31,4 +31,4 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
   },
-};
+}
