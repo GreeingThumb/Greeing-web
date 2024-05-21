@@ -9,5 +9,6 @@ export const customAxiosInstanceForOrval = <T>(
     ...config,
     ...options,
     baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT,
+    isSkipInterceptor: false,
   })
 }
