@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import QueryProvider from './_providers/query-provider'
 import NextTopLoader from 'nextjs-toploader'
+import Header from '@/widgets/header'
+import Footer from '@/widgets/footer'
 
 export const metadata: Metadata = {
   title: 'Greeing',
@@ -18,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={styles.body}>
+        <Header />
         <NextTopLoader height={2} showSpinner={false} color="#000" />
         <QueryProvider>{children}</QueryProvider>
         <Suspense fallback={<span>loading</span>}></Suspense>
+        <Footer />
       </body>
     </html>
   )
