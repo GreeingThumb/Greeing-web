@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from '@/shared/components/Button'
+import { Button } from '@/shared/ui/Button'
 import * as styles from './page.css'
 import Footer from '@/widgets/footer'
 import { useLogin } from '@/shared/hooks/useLogin'
