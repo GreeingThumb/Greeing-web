@@ -3,7 +3,7 @@ import { COLOR } from '@/shared/styles/color'
 
 export const inputStyle = style({
   borderRadius: '6px',
-  border: `solid 1px ${COLOR.gray300}`,
+  border: `solid 2px ${COLOR.gray300}`,
   height: '44px',
   color: COLOR.gray900,
   padding: '12px',

@@ -1,10 +1,10 @@
 'use client'
 
-import { Button } from '@/shared/ui/Button'
 import * as styles from './page.css'
 import Footer from '@/widgets/footer'
 import { useLogin } from '@/shared/hooks/useLogin'
 import { SessionProvider } from 'next-auth/react'
+import { Button } from '@/shared/ui/button'
 
 export default function Home() {
   const { handleLogin } = useLogin()
