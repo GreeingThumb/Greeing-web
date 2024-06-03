@@ -17,6 +17,11 @@ interface UseFunnelOptions {
   stepParamName?: string
 }
 
+// eslint-disable-next-line react/display-name
+const Step = ({ children }: StepProps) => {
+  return <>{children}</>
+}
+
 const useFunnel = ({ initialStep, stepParamName = 'step' }: UseFunnelOptions) => {
   const [currentStep, setCurrentStep] = useState(initialStep)
   const [previousStep, setPreviousStep] = useState<string | null>(null)
@@ -56,8 +61,6 @@ const useFunnel = ({ initialStep, stepParamName = 'step' }: UseFunnelOptions) =>
     },
     [currentStep, previousStep],
   )
-
-  const Step = ({ children }: StepProps) => <>{children}</>
 
   return { Funnel, Step, setNextStep, currentStep }
 }

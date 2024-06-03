@@ -25,13 +25,13 @@ export interface SignUpFunnelActions {
 const SignUpPage = () => {
   const { Funnel, Step, setNextStep } = useFunnel({ initialStep: STEPS[0] })
 
-  const formState = useForm<SignupRequestDto>({
+  const methods = useForm<SignupRequestDto>({
     mode: 'onChange',
     defaultValues: initialValues,
   })
 
   return (
-    <FormProvider {...formState}>
+    <FormProvider {...methods}>
       <div style={{ padding: '12px' }}>
         <Funnel>
           <Step name={STEPS[0]}>

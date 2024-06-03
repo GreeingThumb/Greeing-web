@@ -3,13 +3,15 @@ import { Input } from '@/shared/ui/input'
 import { Controller, useFormContext } from 'react-hook-form'
 import { validateEmail } from '@/shared/lib/validateRules/validateEmail'
 import { Button } from '../../../../shared/ui/button'
+import { useState } from 'react'
 
 const EmailAuthWidget = () => {
+  const [isEmailSend, setIsEmailSend] = useState(false)
   const { control } = useFormContext()
 
   return (
     <>
-      <div>
+      <>
         <InputLabel>이메일</InputLabel>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Controller
@@ -20,9 +22,10 @@ const EmailAuthWidget = () => {
             }}
             render={({ field }) => <Input placeholder="이메일" {...field} />}
           />
-          <Button>인증받기</Button>
+          <Button onClick={() => setIsEmailSend(true)}>인증받기</Button>
         </div>
-      </div>
+        {isEmailSend && <Input placeholder="인증번호" />}
+      </>
     </>
   )
 }
