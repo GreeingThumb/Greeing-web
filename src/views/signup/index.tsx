@@ -39,7 +39,11 @@ const SignUpPage = () => {
             <button onClick={() => setNextStep(STEPS[1])}>1</button>
           </Step>
           <Step name={STEPS[1]}>
-            <EmailAuthWidget onNextButtonClick={console.log} />
+            <EmailAuthWidget
+              onNextButtonClick={() => {
+                console.log('asd')
+              }}
+            />
           </Step>
           <Step name={STEPS[2]}>
             <div>닉네임과 비밀번호 설정</div>

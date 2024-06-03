@@ -4,29 +4,54 @@ import { Controller, useFormContext } from 'react-hook-form'
 import { validateEmail } from '@/shared/lib/validateRules/validateEmail'
 import { Button } from '../../../../shared/ui/button'
 import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { PageAnimation } from '@/shared/ui/page-animation'
 
 const EmailAuthWidget = () => {
   const [isEmailSend, setIsEmailSend] = useState(false)
-  const { control } = useFormContext()
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext()
+
+  const isError = !!errors.email?.message
 
   return (
-    <>
-      <>
-        <InputLabel>이메일</InputLabel>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Controller
-            control={control}
-            name={'email'}
-            rules={{
-              validate: validateEmail,
-            }}
-            render={({ field }) => <Input placeholder="이메일" {...field} />}
-          />
-          <Button onClick={() => setIsEmailSend(true)}>인증받기</Button>
+    <PageAnimation>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div>
+            <InputLabel isError={isError}>이메일</InputLabel>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
+              <Controller
+                control={control}
+                name={'email'}
+                rules={{
+                  validate: validateEmail,
+                }}
+                render={({ field }) => <Input placeholder="이메일" isError={isError} {...field} />}
+              />
+            </div>
+          </div>
+          {isEmailSend && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.6,
+                ease: 'backOut',
+                delay: 0.2,
+              }}
+            >
+              <Input placeholder="인증번호" />
+            </motion.div>
+          )}
+          <Button variant="contained" style={{ width: '100%' }} onClick={() => setIsEmailSend(true)}>
+            {isEmailSend ? '재전송' : '인증받기'}
+          </Button>
         </div>
-        {isEmailSend && <Input placeholder="인증번호" />}
-      </>
-    </>
+      </div>
+    </PageAnimation>
   )
 }
 

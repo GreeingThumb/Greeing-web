@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
 
 export const inputLabelStyle = style({
-  fontSize: '1.1rem',
+  fontSize: '1rem',
   lineHeight: '20px',
   fontWeight: 700,
   color: '#2F3438',
