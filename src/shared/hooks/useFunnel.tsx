@@ -17,7 +17,6 @@ interface UseFunnelOptions {
   stepParamName?: string
 }
 
-// eslint-disable-next-line react/display-name
 const Step = ({ children }: StepProps) => {
   return <>{children}</>
 }

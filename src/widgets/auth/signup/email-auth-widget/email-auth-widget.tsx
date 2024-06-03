@@ -1,7 +1,7 @@
 import { InputLabel } from '@/shared/ui/input-label'
 import { Input } from '@/shared/ui/input'
 import { Controller, useFormContext } from 'react-hook-form'
-import { validateEmail } from '@/shared/lib/validateRules/validateEmail'
+import { validateEmail } from '@/shared/utils/validateRules/validateEmail'
 import { Button } from '../../../../shared/ui/button'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
