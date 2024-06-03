@@ -1,11 +1,13 @@
 import { forwardRef, InputHTMLAttributes, PropsWithRef } from 'react'
-import { inputStyle } from '@/shared/ui/input/input.css'
+import { errorInputStyle, inputStyle } from '@/shared/ui/input/input.css'
 
-interface InputProps extends PropsWithRef<InputHTMLAttributes<HTMLInputElement>> {}
+interface InputProps extends PropsWithRef<InputHTMLAttributes<HTMLInputElement>> {
+  isError?: boolean
+}
 
-// TODO: error input style 적용하기
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  return <input ref={ref} className={inputStyle} {...props} />
+const Input = forwardRef<HTMLInputElement, InputProps>(({ isError = false, ...props }, ref) => {
+  const className = `${inputStyle} ${isError ? errorInputStyle : ''}`
+  return <input ref={ref} className={className} {...props} />
 })
 
 export default Input

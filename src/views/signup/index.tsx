@@ -26,7 +26,7 @@ const SignUpPage = () => {
   const { Funnel, Step, setNextStep } = useFunnel({ initialStep: STEPS[0] })
 
   const formState = useForm<SignupRequestDto>({
-    mode: 'onBlur',
+    mode: 'onChange',
     defaultValues: initialValues,
   })
 

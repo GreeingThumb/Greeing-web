@@ -1,14 +1,16 @@
-import { InputHTMLAttributes, PropsWithoutRef } from 'react'
-import { inputLabelStyle } from '@/shared/ui/input-label/input-label.css'
+import { InputHTMLAttributes, PropsWithoutRef, ReactNode } from 'react'
+import { inputLabelErrorStyle, inputLabelStyle } from '@/shared/ui/input-label/input-label.css'
 
 interface InputLabelProps extends PropsWithoutRef<InputHTMLAttributes<HTMLLabelElement>> {
-  label: string
+  children: ReactNode | string
+  isError?: boolean
 }
 
-const InputLabel = (props: InputLabelProps) => {
+const InputLabel = ({ isError, ...props }: InputLabelProps) => {
+  const className = `${inputLabelStyle} ${isError ? inputLabelErrorStyle : ''}`
   return (
-    <label className={inputLabelStyle} {...props}>
-      {props.label}
+    <label className={className} {...props}>
+      {props.children}
     </label>
   )
 }

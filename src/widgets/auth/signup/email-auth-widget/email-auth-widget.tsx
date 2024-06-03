@@ -10,7 +10,7 @@ const EmailAuthWidget = () => {
   return (
     <>
       <div>
-        <InputLabel label={'이메일'} />
+        <InputLabel>이메일</InputLabel>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <Controller
             control={control}
