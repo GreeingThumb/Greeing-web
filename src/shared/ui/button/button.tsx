@@ -10,11 +10,7 @@ interface ButtonProps extends PropsWithoutRef<ButtonHTMLAttributes<HTMLButtonEle
 }
 
 const Button = ({ children, variant = 'contained', disabled, ...props }: ButtonProps) => {
-  const buttonClassNames = classNames(
-    buttonBaseStyle, // 기본 스타일
-    buttonVariants[variant], // variant에 따른 스타일
-    { [buttonDisabled]: disabled }, // disabled 상태일 때 스타일
-  )
+  const buttonClassNames = classNames(buttonBaseStyle, buttonVariants[variant], { [buttonDisabled]: disabled })
 
   return (
     <button className={buttonClassNames} disabled={disabled} {...props}>

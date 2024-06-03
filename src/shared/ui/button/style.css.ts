@@ -5,7 +5,7 @@ export const buttonBaseStyle = style({
   height: '44px',
   borderRadius: '6px',
   color: 'white',
-  fontSize: '1.1rem',
+  fontSize: '1.6rem',
   width: 'fit-content',
   whiteSpace: 'nowrap',
   padding: '0 12px',

@@ -7,7 +7,7 @@ export const inputStyle = style({
   height: '44px',
   color: COLOR.gray900,
   padding: '12px',
-  fontSize: '1rem',
+  fontSize: '1.4rem',
   transition: 'border-color 0.2s, box-shadow 0.2s',
   width: '100%',
 
