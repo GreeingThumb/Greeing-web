@@ -20,7 +20,7 @@ const EmailAuthWidget = () => {
     <PageAnimation>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <p
-          style={{ whiteSpace: 'pre-wrap', fontSize: '2.4rem', fontWeight: 'bold' }}
+          style={{ whiteSpace: 'pre-wrap', fontSize: '2.4rem', fontWeight: 'bold', marginBottom: '24px' }}
         >{`가입을 진행하기 위해\n이메일을 인증해 주세요!`}</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <div>
