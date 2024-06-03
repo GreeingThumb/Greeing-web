@@ -21,7 +21,7 @@ const EmailAuthWidget = () => {
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         <p
           style={{ whiteSpace: 'pre-wrap', fontSize: '2.4rem', fontWeight: 'bold' }}
-        >{`이메일 인증을\n진행해주세요.`}</p>
+        >{`가입을 진행하기 위해\n이메일을 인증해 주세요!`}</p>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <div>
             <InputLabel isError={isError}>이메일</InputLabel>
