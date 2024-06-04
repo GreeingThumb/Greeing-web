@@ -1,6 +1,10 @@
 import { globalFontFace, globalStyle } from '@vanilla-extract/css'
 import { theme } from './theme.css'
 
+globalStyle('html', {
+  fontSize: '62.5%',
+})
+
 globalStyle(
   'html, body, div, span, h1, h2, h3, h4, h5, h6, p, pre, a, img, strong, article, footer, header, main, nav, section',
   {
