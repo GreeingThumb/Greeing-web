@@ -22,7 +22,7 @@ function getAccessTokenFromLocalStorage(): string | null {
   if (typeof window === 'undefined') return null
 
   const accessToken = localStorage.getItem(ACCESS_TOKEN)
-  return accessToken ? accessToken : null
+  return accessToken || null
 }
 
 async function getAccessTokenFromSession(context?: {

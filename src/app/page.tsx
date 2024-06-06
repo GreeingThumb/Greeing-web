@@ -1,12 +1,12 @@
 'use client'
 
+import { SessionProvider } from 'next-auth/react'
 import * as styles from './page.css'
 import Footer from '@/widgets/footer'
 import { useLogin } from '@/shared/hooks/useLogin'
-import { SessionProvider } from 'next-auth/react'
 import { Button } from '@/shared/ui/button'
 
-export default function Home() {
+const Home = () => {
   const { handleLogin } = useLogin()
 
   return (
@@ -18,3 +18,4 @@ export default function Home() {
     </SessionProvider>
   )
 }
+export default Home

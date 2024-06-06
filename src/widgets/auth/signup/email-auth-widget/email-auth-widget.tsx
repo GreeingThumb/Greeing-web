@@ -1,10 +1,10 @@
-import { InputLabel } from '@/shared/ui/input-label'
-import { Input } from '@/shared/ui/input'
 import { Controller, useFormContext } from 'react-hook-form'
-import { validateEmail } from '@/shared/utils/validateRules/validateEmail'
-import { Button } from '../../../../shared/ui/button'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { InputLabel } from '@/shared/ui/input-label'
+import { Input } from '@/shared/ui/input'
+import { validateEmail } from '@/shared/utils/validateRules/validateEmail'
+import { Button } from '../../../../shared/ui/button'
 import { PageAnimation } from '@/shared/ui/page-animation'
 
 const EmailAuthWidget = () => {
@@ -28,7 +28,7 @@ const EmailAuthWidget = () => {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
               <Controller
                 control={control}
-                name={'email'}
+                name="email"
                 rules={{
                   validate: validateEmail,
                 }}
