@@ -25,4 +25,5 @@ export interface SignupRequestDto {
   password: string
   personalInfoConsent: boolean
   role: SignupRequestDtoRole
+  serviceConsent: boolean
 }

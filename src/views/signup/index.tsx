@@ -13,6 +13,7 @@ const initialValues: SignupRequestDto = {
   isEmailAuthenticated: false,
   marketingConsent: false,
   personalInfoConsent: false,
+  serviceConsent: false,
   password: '',
   email: '',
   role: 'MEMBER',
@@ -35,8 +36,7 @@ const SignUpPage = () => {
       <div style={{ padding: '12px' }}>
         <Funnel>
           <Step name={STEPS[0]}>
-            <SignUpAgreeWidget />
-            <button onClick={() => setNextStep(STEPS[1])}>1</button>
+            <SignUpAgreeWidget onNextButtonClick={() => setNextStep(STEPS[1])} />
           </Step>
           <Step name={STEPS[1]}>
             <EmailAuthWidget />

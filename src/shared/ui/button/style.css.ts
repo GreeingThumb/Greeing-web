@@ -29,10 +29,11 @@ export const buttonVariants = styleVariants({
 })
 
 export const buttonDisabled = style({
-  backgroundColor: COLOR.gray800,
-  color: COLOR.gray300,
+  backgroundColor: COLOR.gray300,
+  color: 'white',
   cursor: 'not-allowed',
-  ':hover': {
-    backgroundColor: COLOR.gray100,
-  },
+})
+
+export const buttonFullWidth = style({
+  width: '100%',
 })
