@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, PropsWithRef } from 'react'
+import { InputHTMLAttributes, PropsWithoutRef } from 'react'
 import classNames from 'classnames'
 import {
   baseCheckboxStyle,
@@ -12,15 +12,17 @@ import {
 
 type CheckboxVariants = 'small' | 'medium' | 'large'
 
-interface CheckboxProps extends PropsWithRef<InputHTMLAttributes<HTMLInputElement>> {
+type CheckboxAttributes = Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>
+
+interface CheckboxProps extends PropsWithoutRef<CheckboxAttributes> {
   label?: string
-  sizeVariant: CheckboxVariants
+  size: CheckboxVariants
 }
 
-const Checkbox = ({ label, sizeVariant = 'small', checked = false, ...props }: CheckboxProps) => {
+const Checkbox = ({ label, size = 'small', checked = false, ...props }: CheckboxProps) => {
   const checkboxClass = classNames(
     baseCheckboxStyle,
-    sizeVariants[sizeVariant],
+    sizeVariants[size],
     {
       [checkedStyle]: checked,
       [uncheckedStyle]: !checked,
@@ -31,7 +33,7 @@ const Checkbox = ({ label, sizeVariant = 'small', checked = false, ...props }: C
   return (
     <label className={checkboxWrapperStyle}>
       <input className={checkboxClass} type="checkbox" checked={checked} {...props} />
-      <span className={classNames(labelStyle, labelVariants[sizeVariant])}>{label}</span>
+      <span className={classNames(labelStyle, labelVariants[size])}>{label}</span>
     </label>
   )
 }

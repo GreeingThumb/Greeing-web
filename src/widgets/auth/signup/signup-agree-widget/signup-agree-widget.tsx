@@ -33,7 +33,7 @@ const SignupAgreeWidget = ({ onNextButtonClick }: SignUpFunnelActions) => {
       <>
         <SignupPageTitle>{`가입을 진행하기 위해\n약관동의를 해주세요`}</SignupPageTitle>
         <Checkbox
-          sizeVariant="medium"
+          size="medium"
           checked={allConsentChecked}
           label="전체 동의 (선택 동의 포함)"
           onChange={e => handleConsentChange('allConsent', e.target.checked)}
@@ -42,7 +42,7 @@ const SignupAgreeWidget = ({ onNextButtonClick }: SignUpFunnelActions) => {
           {checkboxConfig.map(({ name, label }) => (
             <Checkbox
               key={name}
-              sizeVariant="medium"
+              size="medium"
               checked={watch(name)}
               label={label}
               onChange={e => handleConsentChange(name, e.target.checked)}
