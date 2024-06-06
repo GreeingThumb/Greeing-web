@@ -6,7 +6,7 @@ import { Button } from '../../../../shared/ui/button'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { PageAnimation } from '@/shared/ui/page-animation'
-import SignupPageTitle from '../../../../entities/auth/signup/ui/signup-page-title/signup-page-title'
+import { SignupPageTitle } from '@/entities/auth/signup/ui/signup-page-title'
 
 const EmailAuthWidget = () => {
   const [isEmailSend, setIsEmailSend] = useState(false)
