@@ -1,10 +1,10 @@
 'use client'
 
 import useFunnel from '@/shared/hooks/useFunnel'
-
 import { FormProvider, useForm } from 'react-hook-form'
 import { SignupRequestDto } from '@/entities/model'
 import { EmailAuthWidget } from '@/widgets/auth/signup/email-auth-widget'
+import { SignUpAgreeWidget } from '@/widgets/auth/signup/signup-agree-widget'
 
 const STEPS = ['약관동의', '이메일인증', '닉네임설정', '가입축하']
 
@@ -35,7 +35,7 @@ const SignUpPage = () => {
       <div style={{ padding: '12px' }}>
         <Funnel>
           <Step name={STEPS[0]}>
-            <div>마켓팅 개인정보 활용 동의</div>
+            <SignUpAgreeWidget />
             <button onClick={() => setNextStep(STEPS[1])}>1</button>
           </Step>
           <Step name={STEPS[1]}>
