@@ -40,6 +40,8 @@
     "@typescript-eslint/eslint-plugin": "^7.11.0",
     "@vanilla-extract/next-plugin": "^2.4.1",
     "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-simple-import-sort": "^12.1.0",
     "eslint-config-next": "14.2.3",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",

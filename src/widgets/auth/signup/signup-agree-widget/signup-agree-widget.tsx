@@ -1,8 +1,8 @@
+import { useFormContext } from 'react-hook-form'
 import { SignupPageTitle } from '@/entities/auth/signup/ui/signup-page-title'
 import { Checkbox } from '@/shared/ui/checkbox'
 import { Button } from '@/shared/ui/button'
-import { useFormContext } from 'react-hook-form'
-import { SignUpFunnelActions } from '@/views/signup'
+import type { SignUpFunnelActions } from '@/views/signup'
 import { PageAnimation } from '@/shared/ui/page-animation'
 import { checkboxWrapper } from '@/widgets/auth/signup/signup-agree-widget/signup-agree-widget.css'
 

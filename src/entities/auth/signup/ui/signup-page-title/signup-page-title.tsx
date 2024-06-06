@@ -1,5 +1,5 @@
+import type { ReactNode } from 'react'
 import { signupTitleStyle } from '@/entities/auth/signup/ui/signup-page-title/signup-page-title.css'
-import { ReactNode } from 'react'
 
 interface SignupPageTitleProps {
   children?: ReactNode

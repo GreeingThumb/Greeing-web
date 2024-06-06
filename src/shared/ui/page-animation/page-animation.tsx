@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ReactElement } from 'react'
+import type { ReactElement } from 'react'
 
 interface PageAnimationProps {
   children: ReactElement

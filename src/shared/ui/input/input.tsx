@@ -1,4 +1,5 @@
-import { forwardRef, InputHTMLAttributes, PropsWithRef } from 'react'
+import type { InputHTMLAttributes, PropsWithRef } from 'react'
+import { forwardRef } from 'react'
 import { errorInputStyle, inputStyle } from '@/shared/ui/input/input.css'
 
 interface InputProps extends PropsWithRef<InputHTMLAttributes<HTMLInputElement>> {
@@ -11,5 +12,3 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ isError = false, ...pr
 })
 
 export default Input
-
-Input.displayName = 'Input'
