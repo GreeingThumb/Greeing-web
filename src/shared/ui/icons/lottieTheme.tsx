@@ -11,7 +11,6 @@ interface LottieProps {
 
 export const Lottie = ({ animationData, width, height, animationConfig }: LottieProps) => {
   const ref = useRef<HTMLDivElement>(null)
-  const clickAni = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (!ref.current) return
@@ -24,14 +23,6 @@ export const Lottie = ({ animationData, width, height, animationConfig }: Lottie
       ...animationConfig,
       loop: false,
       autoplay: false,
-    })
-
-    clickAni.current?.addEventListener('click', () => {
-      animation.play()
-      animation.setLoop(true)
-      setTimeout(() => {
-        animation.stop()
-      }, 2000)
     })
 
     return () => {
