@@ -21,7 +21,7 @@ const SendEmailVerification = ({ isEmailSend, handleSendEmail }: SendEmailVerifi
   } = useFormContext()
   const email = watch('email')
 
-  const { targetEmail, sendVerificationCode } = useSendEmailCode()
+  const { errorMessage, targetEmail, sendVerificationCode } = useSendEmailCode()
 
   const handleSendButtonClick = () => {
     sendVerificationCode(email, handleSendEmail)
@@ -38,6 +38,7 @@ const SendEmailVerification = ({ isEmailSend, handleSendEmail }: SendEmailVerifi
         </Button>
       </div>
       {errors?.email?.message && <TextMessage type="error">{errors?.email?.message.toString()}</TextMessage>}
+      {errorMessage && <TextMessage type="error">{errorMessage}</TextMessage>}
       {isEmailSend && targetEmail && (
         <div className={sendEmailInfoStyle}>
           <TextMessage type="info">{targetEmail}</TextMessage> <span>이메일을 전송했어요</span>

@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { isAxiosError } from 'axios'
 import { useSendVerificationCode } from '@/entities/api/auth-apis/auth-apis'
 
 const useSendEmailCode = () => {
+  const [errorMessage, setErrorMessage] = useState('')
   const [targetEmail, setTargetEmail] = useState('')
   const sendVerificationCodeMutate = useSendVerificationCode()
 
@@ -14,14 +16,20 @@ const useSendEmailCode = () => {
       },
       {
         onSuccess: ({ data }) => {
+          setErrorMessage('')
           setTargetEmail(data.targetEmail)
           handleSendEmail()
+        },
+        onError: error => {
+          if (isAxiosError(error)) {
+            setErrorMessage(error?.response?.data.message)
+          }
         },
       },
     )
   }
 
-  return { targetEmail, sendVerificationCode }
+  return { errorMessage, targetEmail, sendVerificationCode }
 }
 
 export default useSendEmailCode
