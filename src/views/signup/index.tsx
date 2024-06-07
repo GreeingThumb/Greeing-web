@@ -6,7 +6,6 @@ import type { SignupRequestDto } from '@/entities/model'
 import { SignupRequestDtoRole } from '@/entities/model'
 import { EmailAuthWidget } from '@/widgets/auth/signup/email-auth-widget'
 import { SignUpAgreeWidget } from '@/widgets/auth/signup/signup-agree-widget'
-import NicknamePasswordWidget from '../../widgets/auth/signup/nickname-password-widget/nickname-password-widget'
 
 const STEPS = ['약관동의', '이메일인증', '닉네임설정', '가입축하']
 
@@ -44,7 +43,7 @@ const SignUpPage = () => {
             <EmailAuthWidget onNextButtonClick={() => setNextStep(STEPS[2])} />
           </Step>
           <Step name={STEPS[2]}>
-            <NicknamePasswordWidget />
+            <div>닉네임</div>
           </Step>
           <Step name={STEPS[3]}>
             <div>가입축하</div>
