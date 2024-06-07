@@ -1,29 +1,29 @@
-import { style } from '@vanilla-extract/css'
+import { styleVariants } from '@vanilla-extract/css'
 
-export const sizes = {
-  xs: style({
+export const sizes = styleVariants({
+  xs: {
     width: '12px',
     height: '12px',
     fill: 'currentColor',
-  }),
-  xxs: style({
+  },
+  xxs: {
     width: '14px',
     height: '14px',
     fill: 'currentColor',
-  }),
-  sm: style({
+  },
+  sm: {
     width: '16px',
     height: '16px',
     fill: 'currentColor',
-  }),
-  md: style({
+  },
+  md: {
     width: '20px',
     height: '20px',
     fill: 'currentColor',
-  }),
-  lg: style({
+  },
+  lg: {
     width: '24px',
     height: '24px',
     fill: 'currentColor',
-  }),
-}
+  },
+})

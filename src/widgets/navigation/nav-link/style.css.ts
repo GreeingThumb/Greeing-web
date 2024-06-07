@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
+import { TYPOGRAPHY } from '@/shared/styles/typography'
 
 export const navBarLink = style({
   display: 'flex',
@@ -9,9 +10,7 @@ export const navBarLink = style({
   transition: 'color 0.3s ease',
   gap: '4px',
   flexDirection: 'column',
-  ':hover': {
-    color: COLOR.primary,
-  },
+  ...TYPOGRAPHY.Medium11,
 })
 
 export const activeLink = style({

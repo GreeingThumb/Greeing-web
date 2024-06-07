@@ -7,6 +7,7 @@ import Header from '@/widgets/header'
 import Footer from '@/widgets/footer'
 import QueryProvider from './_providers/query-provider'
 import * as styles from './layout.css'
+import NavBar from '@/widgets/navigation/nav-bar'
 
 export const metadata: Metadata = {
   title: 'Greeing',
@@ -25,8 +26,8 @@ const RootLayout = ({
         <NextTopLoader height={2} showSpinner={false} color="#000" />
         <QueryProvider>{children}</QueryProvider>
         <Suspense fallback={<span>loading</span>} />
+        <NavBar />
         <Footer />
-        <Suspense fallback={<span>loading</span>} />
       </body>
     </html>
   )
