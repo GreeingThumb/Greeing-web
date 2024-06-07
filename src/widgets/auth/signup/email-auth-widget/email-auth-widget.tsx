@@ -6,6 +6,7 @@ import { Input } from '@/shared/ui/input'
 import { validateEmail } from '@/shared/utils/validateRules/validateEmail'
 import { Button } from '../../../../shared/ui/button'
 import { PageAnimation } from '@/shared/ui/page-animation'
+import { SignupPageTitle } from '@/entities/auth/signup/ui/signup-page-title'
 
 const EmailAuthWidget = () => {
   const [isEmailSend, setIsEmailSend] = useState(false)
@@ -19,9 +20,7 @@ const EmailAuthWidget = () => {
   return (
     <PageAnimation>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-        <p
-          style={{ whiteSpace: 'pre-wrap', fontSize: '2.4rem', fontWeight: 'bold', marginBottom: '24px' }}
-        >{`가입을 진행하기 위해\n이메일을 인증해 주세요!`}</p>
+        <SignupPageTitle>{`가입을 진행하기 위해\n이메일을 인증해 주세요!`}</SignupPageTitle>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <div>
             <InputLabel isError={isError}>이메일</InputLabel>

@@ -32,6 +32,7 @@ const useFunnel = ({ initialStep, stepParamName = 'step' }: UseFunnelOptions) =>
       router.push(`${pathname}?${stepParamName}=${initialStep}`) // 초기 URL 설정
     } else {
       router.push(`${pathname}?${stepParamName}=${queryStep}`)
+      setCurrentStep(queryStep)
     }
   }, [initialStep, queryStep, pathname]) // pathname 및 stepParamName 추가
 
@@ -48,7 +49,7 @@ const useFunnel = ({ initialStep, stepParamName = 'step' }: UseFunnelOptions) =>
 
       return <>{targetStep}</>
     },
-    [currentStep],
+    [currentStep, queryStep],
   )
 
   return { Funnel, Step, setNextStep, currentStep }

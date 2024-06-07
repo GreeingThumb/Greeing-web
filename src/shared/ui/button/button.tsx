@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, PropsWithoutRef, ReactNode } from 'react'
 import classNames from 'classnames'
-import { buttonBaseStyle, buttonVariants, buttonDisabled } from '@/shared/ui/button/style.css'
+import { buttonBaseStyle, buttonVariants, buttonDisabled, buttonFullWidth } from '@/shared/ui/button/style.css'
 
 type ButtonVariants = 'contained' | 'outlined'
 
@@ -8,13 +8,24 @@ interface ButtonProps extends PropsWithoutRef<ButtonHTMLAttributes<HTMLButtonEle
   children: ReactNode
   variant?: ButtonVariants
   type?: 'button' | 'submit' | 'reset'
+  fullWidth?: boolean
 }
 
-const Button = ({ children, variant = 'contained', disabled, type = 'button', ...props }: ButtonProps) => {
-  const buttonClassNames = classNames(buttonBaseStyle, buttonVariants[variant], { [buttonDisabled]: disabled })
+const Button = ({
+  fullWidth = false,
+  children,
+  variant = 'contained',
+  disabled,
+  type = 'button',
+  ...props
+}: ButtonProps) => {
+  const buttonClassNames = classNames(buttonBaseStyle, buttonVariants[variant], {
+    [buttonDisabled]: disabled,
+    [buttonFullWidth]: fullWidth,
+  })
 
   return (
-    <button className={buttonClassNames} type={type || 'button'} disabled={disabled} {...props}>
+    <button className={buttonClassNames} type={type} disabled={disabled} {...props}>
       {children}
     </button>
   )
