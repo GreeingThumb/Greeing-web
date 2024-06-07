@@ -1,22 +1,23 @@
 import '@/shared/styles/globalStyle.css'
-import * as styles from './layout.css'
 import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
 import { Suspense } from 'react'
-import QueryProvider from './_providers/query-provider'
 import NextTopLoader from 'nextjs-toploader'
 import Header from '@/widgets/header'
 import Footer from '@/widgets/footer'
+import QueryProvider from './_providers/query-provider'
+import * as styles from './layout.css'
 
 export const metadata: Metadata = {
   title: 'Greeing',
   description: 'Green your life with Greeing',
 }
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
-  children: React.ReactNode
-}>) {
+  children: ReactNode
+}>) => {
   return (
     <html lang="ko">
       <body className={styles.body}>
@@ -25,7 +26,10 @@ export default function RootLayout({
         <QueryProvider>{children}</QueryProvider>
         <Suspense fallback={<span>loading</span>}></Suspense>
         <Footer />
+        <Suspense fallback={<span>loading</span>} />
       </body>
     </html>
   )
 }
+
+export default RootLayout

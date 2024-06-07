@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import axios, { AxiosInstance } from 'axios'
+import type { AxiosInstance } from 'axios'
+import axios from 'axios'
 import { retryWithRefreshToken, setAuthorizationHeader } from '@/shared/api/axiosAuthInterceptors'
 
 const DEFAULT_API_ENDPOINT = 'http://localhost:8080'

@@ -10,7 +10,8 @@ import type { SignupRequestDtoRole } from './signupRequestDtoRole'
 
 export interface SignupRequestDto {
   email: string
-  gardeningExperience: SignupRequestDtoGardeningExperience
+  gardeningExperience?: SignupRequestDtoGardeningExperience
+  isEmailAuthenticated: boolean
   marketingConsent: boolean
   /**
    * @minLength 2
@@ -24,4 +25,5 @@ export interface SignupRequestDto {
   password: string
   personalInfoConsent: boolean
   role: SignupRequestDtoRole
+  serviceConsent: boolean
 }
