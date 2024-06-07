@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
+import { TYPOGRAPHY } from '@/shared/styles/typography'
 
 export const inputButtonWrapper = style({
   display: 'flex',
@@ -12,7 +13,7 @@ export const sendEmailInfoStyle = style({
   display: 'flex',
   gap: '4px',
   alignItems: 'center',
-  fontSize: '1.3rem',
+  ...TYPOGRAPHY.Medium13,
   color: COLOR.gray800,
   marginTop: '8px',
 })

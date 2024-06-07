@@ -1,11 +1,12 @@
 import { style, styleVariants } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
+import { TYPOGRAPHY } from '@/shared/styles/typography'
 
 export const buttonBaseStyle = style({
+  ...TYPOGRAPHY.Medium16,
   height: '44px',
   borderRadius: '6px',
   color: 'white',
-  fontSize: '1.6rem',
   width: 'fit-content',
   whiteSpace: 'nowrap',
   padding: '0 12px',
