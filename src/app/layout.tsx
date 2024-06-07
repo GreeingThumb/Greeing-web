@@ -24,7 +24,7 @@ const RootLayout = ({
         <Header />
         <NextTopLoader height={2} showSpinner={false} color="#000" />
         <QueryProvider>{children}</QueryProvider>
-        <Suspense fallback={<span>loading</span>}></Suspense>
+        <Suspense fallback={<span>loading</span>} />
         <Footer />
         <Suspense fallback={<span>loading</span>} />
       </body>

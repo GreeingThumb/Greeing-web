@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
 
 export interface LinkProps {
@@ -14,14 +14,14 @@ export const Link = ({ to, children, className, ...props }: LinkProps) => {
 
   const resolvedClassName = typeof className === 'function' ? className({ isActive }) : className
 
-  const onClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
     router.push(to)
   }
 
   return (
-    <div onClick={onClick} className={resolvedClassName} {...props}>
+    <button type="button" onClick={onClick} className={resolvedClassName} {...props}>
       {typeof children === 'function' ? children({ isActive }) : children}
-    </div>
+    </button>
   )
 }

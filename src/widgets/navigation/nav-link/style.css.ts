@@ -1,5 +1,5 @@
-import { COLOR } from '@/shared/styles/color'
 import { style } from '@vanilla-extract/css'
+import { COLOR } from '@/shared/styles/color'
 
 export const navBarLink = style({
   display: 'flex',

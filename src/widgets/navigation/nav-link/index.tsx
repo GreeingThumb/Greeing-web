@@ -1,4 +1,5 @@
-import { Link, LinkProps } from '@/shared/ui/links/link'
+import type { LinkProps } from '@/shared/ui/links/link'
+import { Link } from '@/shared/ui/links/link'
 import * as style from './style.css'
 
 const NavBarLink = ({ children, ...props }: LinkProps) => {

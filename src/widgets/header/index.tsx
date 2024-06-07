@@ -1,9 +1,7 @@
-// src/components/Header.tsx
-import React from 'react'
-import * as styles from './style.css'
 import Image from 'next/image'
+import * as styles from './style.css'
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.headerWrap}>

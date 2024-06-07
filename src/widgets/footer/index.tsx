@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import * as style from './style.css'
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className={style.footer}>
       <Image src="/assets/icon/logo-gray.svg" width={42} height={28} alt="그링" />
@@ -22,3 +22,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

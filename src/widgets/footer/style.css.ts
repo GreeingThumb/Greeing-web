@@ -1,6 +1,6 @@
+import { style } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
 import { sprinkles } from '@/shared/styles/sprinkle.css'
-import { style } from '@vanilla-extract/css'
 
 export const footer = style({
   display: 'flex',

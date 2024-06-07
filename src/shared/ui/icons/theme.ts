@@ -1,5 +1,5 @@
 import { sizes } from './style.css'
-import { IconSize } from './types'
+import type { IconSize } from './types'
 
 export const iconSizeToClassName: Record<IconSize, string> = {
   xs: sizes.xs,

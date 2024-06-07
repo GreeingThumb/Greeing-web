@@ -1,4 +1,5 @@
 'use client'
+
 import * as style from './style.css'
 import NavBarLink from '../nav-link'
 import search from '@/shared/ui/icons/lottie/search.json'
@@ -8,7 +9,7 @@ import home from '@/shared/ui/icons/lottie/home.json'
 import community from '@/shared/ui/icons/lottie/community.json'
 import myPage from '@/shared/ui/icons/lottie/my-page.json'
 
-export default function NavBar() {
+export const NavBar = () => {
   return (
     <nav className={style.nav}>
       <NavBarLink to="/home">
@@ -34,3 +35,5 @@ export default function NavBar() {
     </nav>
   )
 }
+
+export default NavBar

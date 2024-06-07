@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react'
-import lottie, { AnimationConfigWithData, AnimationConfigWithPath } from 'lottie-web'
+import type { AnimationConfigWithData, AnimationConfigWithPath } from 'lottie-web'
+import lottie from 'lottie-web'
 
 interface LottieProps {
   animationData: AnimationConfigWithData['animationData']
   width: number
   height: number
-  speed?: number
   animationConfig?: AnimationConfigWithPath
 }
 
