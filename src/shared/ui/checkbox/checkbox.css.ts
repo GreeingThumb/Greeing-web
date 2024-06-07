@@ -1,5 +1,6 @@
 import { style, styleVariants } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
+import { TYPOGRAPHY } from '@/shared/styles/typography'
 
 export const checkboxWrapperStyle = style({
   display: 'flex',
@@ -44,17 +45,16 @@ export const checkedStyle = style({
 
 export const labelVariants = styleVariants({
   small: {
-    fontSize: '1.7rem',
+    ...TYPOGRAPHY.Regular16,
   },
   medium: {
-    fontSize: '1.8rem',
+    ...TYPOGRAPHY.Regular17,
   },
   large: {
-    fontSize: '2rem',
+    ...TYPOGRAPHY.Regular18,
   },
 })
 
 export const labelStyle = style({
   color: COLOR.gray800,
-  fontWeight: 400,
 })
