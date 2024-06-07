@@ -3,6 +3,7 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import useFunnel from '@/shared/hooks/useFunnel'
 import type { SignupRequestDto } from '@/entities/model'
+import { SignupRequestDtoRole } from '@/entities/model'
 import { EmailAuthWidget } from '@/widgets/auth/signup/email-auth-widget'
 import { SignUpAgreeWidget } from '@/widgets/auth/signup/signup-agree-widget'
 
@@ -16,7 +17,7 @@ const initialValues: SignupRequestDto = {
   serviceConsent: false,
   password: '',
   email: '',
-  role: 'MEMBER',
+  role: SignupRequestDtoRole.MEMBER,
 }
 
 export interface SignUpFunnelActions {
@@ -39,13 +40,10 @@ const SignUpPage = () => {
             <SignUpAgreeWidget onNextButtonClick={() => setNextStep(STEPS[1])} />
           </Step>
           <Step name={STEPS[1]}>
-            <EmailAuthWidget />
+            <EmailAuthWidget onNextButtonClick={() => setNextStep(STEPS[2])} />
           </Step>
           <Step name={STEPS[2]}>
-            <div>닉네임과 비밀번호 설정</div>
-            <button type="button" onClick={() => setNextStep(STEPS[3])}>
-              3
-            </button>
+            <div>닉네임</div>
           </Step>
           <Step name={STEPS[3]}>
             <div>가입축하</div>

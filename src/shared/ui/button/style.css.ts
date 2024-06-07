@@ -1,11 +1,13 @@
 import { style, styleVariants } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
+import { TYPOGRAPHY } from '@/shared/styles/typography'
+import { theme } from '@/shared/styles/theme.css'
 
 export const buttonBaseStyle = style({
+  ...TYPOGRAPHY.Medium16,
   height: '44px',
   borderRadius: '6px',
-  color: 'white',
-  fontSize: '1.6rem',
+  color: theme.color.white,
   width: 'fit-content',
   whiteSpace: 'nowrap',
   padding: '0 12px',
@@ -30,7 +32,7 @@ export const buttonVariants = styleVariants({
 
 export const buttonDisabled = style({
   backgroundColor: COLOR.gray300,
-  color: 'white',
+  color: theme.color.white,
   cursor: 'not-allowed',
 })
 

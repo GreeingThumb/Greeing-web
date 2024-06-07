@@ -1,5 +1,6 @@
 import { style } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
+import { TYPOGRAPHY } from '@/shared/styles/typography'
 
 export const inputStyle = style({
   borderRadius: '6px',
@@ -7,7 +8,7 @@ export const inputStyle = style({
   height: '44px',
   color: COLOR.gray900,
   padding: '12px',
-  fontSize: '1.4rem',
+  ...TYPOGRAPHY.Medium14,
   transition: 'border-color 0.2s, box-shadow 0.2s',
   width: '100%',
 

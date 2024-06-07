@@ -1,55 +1,40 @@
-import { Controller, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { InputLabel } from '@/shared/ui/input-label'
-import { Input } from '@/shared/ui/input'
-import { validateEmail } from '@/shared/utils/validateRules/validateEmail'
 import { Button } from '../../../../shared/ui/button'
 import { PageAnimation } from '@/shared/ui/page-animation'
 import { SignupPageTitle } from '@/entities/auth/signup/ui/signup-page-title'
+import { emailAuthContentWrapper, emailAuthWrapper } from './email-auth-widget.css'
+import type { SignUpFunnelActions } from '@/views/signup'
+import { SendEmailVerification } from '@/features/auth/signup/ui/send-email-verification'
+import { AuthenticateEmailCode } from '@/features/auth/signup/ui/authenticate-email-code'
 
-const EmailAuthWidget = () => {
+const EmailAuthWidget = ({ onNextButtonClick }: SignUpFunnelActions) => {
   const [isEmailSend, setIsEmailSend] = useState(false)
   const {
-    control,
+    watch,
     formState: { errors },
   } = useFormContext()
 
+  const handleSendEmail = () => {
+    setIsEmailSend(true)
+  }
+
+  const isEmailAuthenticated = watch('isEmailAuthenticated')
   const isError = !!errors.email?.message
 
   return (
     <PageAnimation>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <div className={emailAuthWrapper}>
         <SignupPageTitle>{`가입을 진행하기 위해\n이메일을 인증해 주세요!`}</SignupPageTitle>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+        <div className={emailAuthContentWrapper}>
           <div>
             <InputLabel isError={isError}>이메일</InputLabel>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
-              <Controller
-                control={control}
-                name="email"
-                rules={{
-                  validate: validateEmail,
-                }}
-                render={({ field }) => <Input placeholder="이메일" isError={isError} {...field} />}
-              />
-            </div>
+            <SendEmailVerification isEmailSend={isEmailSend} handleSendEmail={handleSendEmail} />
           </div>
-          {isEmailSend && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.6,
-                ease: 'backOut',
-                delay: 0.2,
-              }}
-            >
-              <Input placeholder="인증번호" />
-            </motion.div>
-          )}
-          <Button variant="contained" style={{ width: '100%' }} onClick={() => setIsEmailSend(true)}>
-            {isEmailSend ? '재전송' : '인증받기'}
+          <AuthenticateEmailCode isEmailSend={isEmailSend} isVerified={isEmailAuthenticated} />
+          <Button fullWidth disabled={!isEmailAuthenticated} onClick={onNextButtonClick}>
+            다음
           </Button>
         </div>
       </div>
