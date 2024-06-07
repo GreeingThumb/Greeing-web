@@ -2,7 +2,6 @@ import { style, styleVariants } from '@vanilla-extract/css'
 import { COLOR } from '@/shared/styles/color'
 
 export const baseStyle = style({
-  marginTop: '4px',
   fontSize: '1.4rem',
 })
 

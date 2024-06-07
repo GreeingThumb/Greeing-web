@@ -9,7 +9,9 @@ export const inputButtonWrapper = style({
 })
 
 export const sendEmailInfoStyle = style({
-  marginLeft: '2px',
+  display: 'flex',
+  gap: '4px',
+  alignItems: 'center',
   fontSize: '1.3rem',
   color: COLOR.gray800,
   marginTop: '8px',

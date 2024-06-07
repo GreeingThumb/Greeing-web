@@ -5,10 +5,11 @@ import { Button } from '../../../../shared/ui/button'
 import { PageAnimation } from '@/shared/ui/page-animation'
 import { SignupPageTitle } from '@/entities/auth/signup/ui/signup-page-title'
 import { emailAuthContentWrapper, emailAuthWrapper } from './email-auth-widget.css'
-import AuthenticateEmailCode from '@/features/auth/signup/ui/authenticate-email-code/authenticate-email-code'
-import SendEmailVerification from '@/features/auth/signup/ui/send-email-verification/send-email-verification'
+import type { SignUpFunnelActions } from '@/views/signup'
+import { SendEmailVerification } from '@/features/auth/signup/ui/send-email-verification'
+import { AuthenticateEmailCode } from '@/features/auth/signup/ui/authenticate-email-code'
 
-const EmailAuthWidget = () => {
+const EmailAuthWidget = ({ onNextButtonClick }: SignUpFunnelActions) => {
   const [isEmailSend, setIsEmailSend] = useState(false)
   const {
     watch,
@@ -20,7 +21,6 @@ const EmailAuthWidget = () => {
   }
 
   const isEmailAuthenticated = watch('isEmailAuthenticated')
-
   const isError = !!errors.email?.message
 
   return (
@@ -33,7 +33,7 @@ const EmailAuthWidget = () => {
             <SendEmailVerification isEmailSend={isEmailSend} handleSendEmail={handleSendEmail} />
           </div>
           <AuthenticateEmailCode isEmailSend={isEmailSend} isVerified={isEmailAuthenticated} />
-          <Button fullWidth disabled={!isEmailAuthenticated}>
+          <Button fullWidth disabled={!isEmailAuthenticated} onClick={onNextButtonClick}>
             다음
           </Button>
         </div>

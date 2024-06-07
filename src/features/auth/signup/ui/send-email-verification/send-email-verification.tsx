@@ -39,9 +39,9 @@ const SendEmailVerification = ({ isEmailSend, handleSendEmail }: SendEmailVerifi
       </div>
       {errors?.email?.message && <TextMessage type="error">{errors?.email?.message.toString()}</TextMessage>}
       {isEmailSend && targetEmail && (
-        <p className={sendEmailInfoStyle}>
-          <TextMessage type="info">{targetEmail}</TextMessage> 이메일을 전송했어요
-        </p>
+        <div className={sendEmailInfoStyle}>
+          <TextMessage type="info">{targetEmail}</TextMessage> <span>이메일을 전송했어요</span>
+        </div>
       )}
     </>
   )

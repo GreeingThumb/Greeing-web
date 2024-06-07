@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { EmailAuthCode } from '@/entities/auth/signup/ui/email-auth-code'
 import useEmailAuthenticate from '@/entities/auth/signup/query/useEmailAuthenticate'
+import { TextMessage } from '@/shared/ui/text-message'
 
 interface AuthenticateEmailCodeProps {
   isEmailSend: boolean
@@ -17,7 +18,7 @@ const AuthenticateEmailCode = ({ isEmailSend, isVerified }: AuthenticateEmailCod
     setValue('isEmailAuthenticated', isAuthenticated)
   }
 
-  const { verifyEmailCode } = useEmailAuthenticate()
+  const { errorMessage, verifyEmailCode } = useEmailAuthenticate()
 
   useEffect(() => {
     if (verificationCode.length === 6) {
@@ -36,12 +37,16 @@ const AuthenticateEmailCode = ({ isEmailSend, isVerified }: AuthenticateEmailCod
   }
 
   return (
-    <EmailAuthCode
-      isVerified={isVerified}
-      isEmailSend={isEmailSend}
-      handleChange={handleChange}
-      value={verificationCode}
-    />
+    <>
+      <EmailAuthCode
+        isError={!!errorMessage}
+        isVerified={isVerified}
+        isEmailSend={isEmailSend}
+        handleChange={handleChange}
+        value={verificationCode}
+      />
+      {errorMessage && <TextMessage type="error">{errorMessage}</TextMessage>}
+    </>
   )
 }
 
