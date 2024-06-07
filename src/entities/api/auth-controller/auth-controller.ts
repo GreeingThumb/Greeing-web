@@ -100,7 +100,7 @@ export const verifyEmailCode = (
 ) => {
   return customAxiosInstanceForOrval<EmailVerificationResponse>(
     {
-      url: `/api/v1/auth/verify-email/confirm`,
+      url: `/v1/auth/verify-email/confirm`,
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       data: emailVerificationRequestDto,

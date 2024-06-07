@@ -3,6 +3,7 @@
 import { FormProvider, useForm } from 'react-hook-form'
 import useFunnel from '@/shared/hooks/useFunnel'
 import type { SignupRequestDto } from '@/entities/model'
+import { SignupRequestDtoRole } from '@/entities/model'
 import { EmailAuthWidget } from '@/widgets/auth/signup/email-auth-widget'
 import { SignUpAgreeWidget } from '@/widgets/auth/signup/signup-agree-widget'
 
@@ -16,7 +17,7 @@ const initialValues: SignupRequestDto = {
   serviceConsent: false,
   password: '',
   email: '',
-  role: 'MEMBER',
+  role: SignupRequestDtoRole.MEMBER,
 }
 
 export interface SignUpFunnelActions {
