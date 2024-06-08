@@ -9,7 +9,7 @@ import home from '@/shared/ui/icons/lottie/home.json'
 import community from '@/shared/ui/icons/lottie/community.json'
 import myPage from '@/shared/ui/icons/lottie/my-page.json'
 
-export const NavBar = () => {
+const NavBar = () => {
   return (
     <nav className={style.nav}>
       <NavBarLink to="/home" title="홈">

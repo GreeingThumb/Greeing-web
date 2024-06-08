@@ -29,9 +29,9 @@ const useFunnel = ({ initialStep, stepParamName = 'step' }: UseFunnelOptions) =>
 
   useEffect(() => {
     if (!queryStep) {
-      router.push(`${pathname}?${stepParamName}=${initialStep}`) // 초기 URL 설정
+      router.replace(`${pathname}?${stepParamName}=${initialStep}`)
     } else {
-      router.push(`${pathname}?${stepParamName}=${queryStep}`)
+      router.replace(`${pathname}?${stepParamName}=${queryStep}`)
       setCurrentStep(queryStep)
     }
   }, [initialStep, queryStep, pathname]) // pathname 및 stepParamName 추가

@@ -1,6 +1,6 @@
 'use client'
 
-import { SessionProvider } from 'next-auth/react'
+import { redirect } from 'next/navigation'
 import * as styles from './page.css'
 import { useLogin } from '@/shared/hooks/useLogin'
 import { Button } from '@/shared/ui/button'
@@ -8,12 +8,12 @@ import { Button } from '@/shared/ui/button'
 const Home = () => {
   const { handleLogin } = useLogin()
 
+  redirect('/home')
+
   return (
-    <SessionProvider>
-      <main className={styles.page}>
-        <Button onClick={() => handleLogin('ghksa2ls09041@gmail.com', 'wjdghksals1!')}>Button</Button>
-      </main>
-    </SessionProvider>
+    <main className={styles.page}>
+      <Button onClick={() => handleLogin('ghksa2ls09041@gmail.com', 'wjdghksals1!')}>Button</Button>
+    </main>
   )
 }
 export default Home
