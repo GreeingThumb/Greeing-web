@@ -10,9 +10,7 @@ const Layout = ({ children }: LayoutProps) => {
     isHeader: true,
     header: {
       isBack: true,
-      title: '회원가입',
     },
-    isBottomNav: true,
   })
   return <PageLayout config={config}>{children}</PageLayout>
 }
