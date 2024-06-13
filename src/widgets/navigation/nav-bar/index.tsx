@@ -12,20 +12,20 @@ import myPage from '@/shared/ui/icons/lottie/my-page.json'
 const NavBar = () => {
   return (
     <nav className={style.nav}>
-      <NavBarLink to="/home" title="홈">
-        <Lottie animationData={home} width={30} height={30} />
+      <NavBarLink to="#" title="홈">
+        <Lottie animationData={home} width={30} height={30} i />
       </NavBarLink>
-      <NavBarLink to="/plant" title="그링카드">
+      <NavBarLink to="#" title="그링카드">
         <Lottie animationData={plant} width={30} height={30} />
       </NavBarLink>
-      <NavBarLink to="/community" title="커뮤니티">
-        <Lottie animationData={community} width={30} height={30} />
+      <NavBarLink to="#" title="커뮤니티">
+        <Lottie animationData={community} width={40} height={40} />
       </NavBarLink>
-      <NavBarLink to="/search" title="검색">
-        <Lottie animationData={search} width={30} height={30} />
+      <NavBarLink to="#" title="검색">
+        <Lottie animationData={search} width={45} height={40} />
       </NavBarLink>
-      <NavBarLink to="/mypage" title="설정">
-        <Lottie animationData={myPage} width={30} height={30} />
+      <NavBarLink to="#" title="설정">
+        <Lottie animationData={myPage} width={25} height={25} />
       </NavBarLink>
     </nav>
   )

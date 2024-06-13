@@ -20,8 +20,8 @@ const NavBarLink = ({ to, title, children }: LinkProps) => {
 
   return (
     <Link className={linkClassNames} href={to}>
-      {children}
-      {title}
+      <div style={{ height: '40px' }}>{children}</div>
+      <span style={{ height: '10px' }}>{title}</span>
     </Link>
   )
 }

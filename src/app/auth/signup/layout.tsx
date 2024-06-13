@@ -7,6 +7,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const config = createLayoutConfig({
+    isBottomNav: true,
     isHeader: true,
     header: {
       isBack: true,
