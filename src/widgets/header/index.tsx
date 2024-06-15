@@ -2,10 +2,10 @@
 
 import { useRouter } from 'next/navigation'
 import * as styles from './style.css'
-import type { HeaderConfig } from '@/widgets/page-layout'
 import LogoIcon from '@/shared/assets/svg/logo.svg'
 import ArrowLeftIcon from '@/shared/assets/svg/arrow-left.svg'
 import { COLOR } from '@/shared/styles/color'
+import type { HeaderConfig } from '@/shared/utils/layout/createLayoutConfig'
 
 interface HeaderProps {
   config: HeaderConfig
