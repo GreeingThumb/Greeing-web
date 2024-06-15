@@ -10,7 +10,7 @@ export const nav = style({
   position: 'fixed',
   bottom: 0,
   zIndex: 20,
-  maxWidth: '100%',
+  maxWidth: '500px',
   height: '70px',
   background: 'white',
   borderTop: `1px solid ${COLOR.gray300}`,

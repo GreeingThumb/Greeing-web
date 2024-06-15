@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { createLayoutConfig } from '@/shared/utils/layout/createLayoutConfig'
 import { PageLayout } from '@/widgets/page-layout'
+import { createLayoutConfig } from '@/shared/utils/layout/createLayoutConfig'
 
 interface LayoutProps {
   children: ReactNode
@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
     isBottomNav: true,
     isHeader: true,
     header: {
-      isBack: true,
+      isLogo: true,
     },
   })
   return <PageLayout config={config}>{children}</PageLayout>
