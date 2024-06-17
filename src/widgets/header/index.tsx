@@ -1,14 +1,38 @@
-import Image from 'next/image'
-import * as styles from './style.css'
+'use client'
 
-const Header = () => {
+import { useRouter } from 'next/navigation'
+import * as styles from './style.css'
+import LogoIcon from '@/shared/assets/svg/logo.svg'
+import ArrowLeftIcon from '@/shared/assets/svg/arrow-left.svg'
+import { COLOR } from '@/shared/styles/color'
+import type { HeaderConfig } from '@/shared/utils/layout/createLayoutConfig'
+
+interface HeaderProps {
+  config: HeaderConfig
+}
+
+const Header = ({ config }: HeaderProps) => {
+  const router = useRouter()
+  const { isBack, rightIcon, rightIconClick, isLogo, title } = config
+
   return (
     <header className={styles.header}>
       <div className={styles.headerWrap}>
-        <Image src="/assets/icon/logo.svg" width={60} height={40} alt="greeing" className={styles.imgIcon} />
-        <div className={styles.links}>
-          <Image src="/assets/icon/bell.svg" width={23} height={24} alt="greeing" className={styles.imgIcon} />
-          <Image src="/assets/icon/search.svg" width={27} height={30} alt="greeing" className={styles.imgIcon} />
+        <div className={styles.leftSection}>
+          {isBack && (
+            <button type="button" onClick={router.back}>
+              <ArrowLeftIcon width={26} height={26} fill={COLOR.gray900} />
+            </button>
+          )}
+          {isLogo && <LogoIcon width={46} height={46} />}
+        </div>
+        <div className={styles.centerSection}>{title && <h2 className={styles.titleStyle}>{title}</h2>}</div>
+        <div className={styles.rightSection}>
+          {rightIcon && (
+            <button type="button" onClick={rightIconClick}>
+              {rightIcon}
+            </button>
+          )}
         </div>
       </div>
     </header>

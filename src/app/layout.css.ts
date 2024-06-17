@@ -5,7 +5,7 @@ export const body = style({
   width: '100vw',
   maxWidth: '500px',
   height: '100%',
-  minHeight: '100vh',
+  minHeight: '100dvh',
   margin: '0 auto',
   position: 'relative',
   backgroundColor: theme.color.white,
