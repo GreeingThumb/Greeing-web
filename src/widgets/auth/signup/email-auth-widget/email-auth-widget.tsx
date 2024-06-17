@@ -4,7 +4,7 @@ import { InputLabel } from '@/shared/ui/input-label'
 import { Button } from '../../../../shared/ui/button'
 import { PageAnimation } from '@/shared/ui/page-animation'
 import { SignupPageTitle } from '@/entities/auth/signup/ui/signup-page-title'
-import { emailAuthContentWrapper, emailAuthWrapper } from './email-auth-widget.css'
+import { emailAuthContentWrapper } from './email-auth-widget.css'
 import type { SignUpFunnelActions } from '@/views/signup'
 import { SendEmailVerification } from '@/features/auth/signup/ui/send-email-verification'
 import { AuthenticateEmailCode } from '@/features/auth/signup/ui/authenticate-email-code'
@@ -25,7 +25,7 @@ const EmailAuthWidget = ({ onNextButtonClick }: SignUpFunnelActions) => {
 
   return (
     <PageAnimation>
-      <div className={emailAuthWrapper}>
+      <div>
         <SignupPageTitle>{`가입을 진행하기 위해\n이메일을 인증해 주세요!`}</SignupPageTitle>
         <div className={emailAuthContentWrapper}>
           <div>
