@@ -1,5 +1,5 @@
 import { Suspense } from 'react'
-import SignUpPage from '@/views/signup'
+import SignUpPage from '../../../views/auth/signup'
 
 const SignUp = async () => {
   return (
