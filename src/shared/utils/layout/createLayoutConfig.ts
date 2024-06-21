@@ -12,7 +12,7 @@ export interface LayoutConfig {
   isHeader?: boolean
   isFooter?: boolean
   isBottomNav?: boolean
-  header?: HeaderConfig
+  header: HeaderConfig
 }
 
 export const createLayoutConfig = (config: LayoutConfig): LayoutConfig => ({
