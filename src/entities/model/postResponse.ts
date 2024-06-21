@@ -6,6 +6,7 @@
  * OpenAPI spec version: 1.0.0
  */
 import type { PostImageResponse } from './postImageResponse'
+import type { UserResponse } from './userResponse'
 
 export interface PostResponse {
   categoryId: number
@@ -19,4 +20,5 @@ export interface PostResponse {
   postImages: PostImageResponse[]
   title: string
   updatedAt: string
+  user: UserResponse
 }
