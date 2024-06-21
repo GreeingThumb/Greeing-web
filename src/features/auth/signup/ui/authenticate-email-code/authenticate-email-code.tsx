@@ -1,7 +1,7 @@
 import type { ChangeEvent } from 'react'
 import { useEffect, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
-import { EmailAuthCode } from '@/entities/auth/signup/ui/email-auth-code'
+import { EmailAuthCode } from '../email-auth-code'
 import useEmailAuthenticate from '@/entities/auth/signup/query/useEmailAuthenticate'
 import { TextMessage } from '@/shared/ui/text-message'
 

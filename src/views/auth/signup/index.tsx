@@ -46,9 +46,6 @@ const SignUpPage = () => {
           <Step name={STEPS[2]}>
             <NicknamePasswordWidget />
           </Step>
-          <Step name={STEPS[3]}>
-            <div>가입축하</div>
-          </Step>
         </Funnel>
       </div>
     </FormProvider>
