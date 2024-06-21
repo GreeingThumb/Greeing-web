@@ -4,10 +4,10 @@ import { useSession } from 'next-auth/react'
 import * as style from './style.css'
 import NavBarLink from '../nav-link'
 // import search from '@/shared/ui/icons/lottie/search.json'
-import plant from '@/shared/ui/icons/lottie/plant.json'
-import home from '@/shared/ui/icons/lottie/home.json'
-import community from '@/shared/ui/icons/lottie/community.json'
-import myPage from '@/shared/ui/icons/lottie/my-page.json'
+import plant from '@/shared/assets/lottie/plant.json'
+import home from '@/shared/assets/lottie/home.json'
+import community from '@/shared/assets/lottie/community.json'
+import myPage from '@/shared/assets/lottie/my-page.json'
 
 const BottomNavigation = () => {
   const { data: session } = useSession()
