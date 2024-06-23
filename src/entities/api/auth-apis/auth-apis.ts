@@ -5,14 +5,24 @@
  * OpenAPI3 - Greeing Swagger UI
  * OpenAPI spec version: 1.0.0
  */
-import { useMutation } from '@tanstack/react-query'
-import type { MutationFunction, UseMutationOptions, UseMutationResult } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
+import type {
+  MutationFunction,
+  QueryFunction,
+  QueryKey,
+  UseMutationOptions,
+  UseMutationResult,
+  UseQueryOptions,
+  UseQueryResult,
+} from '@tanstack/react-query'
 import type {
   AuthenticatedResponse,
+  CheckNicknameParams,
   EmailVerificationRequestDto,
   EmailVerificationResponse,
   EmailVerificationSendResponse,
   LoginRequestDto,
+  NicknameDuplicateResponse,
   SignupRequestDto,
   SignupResponse,
 } from '../../model'
@@ -282,4 +292,64 @@ export const useLoginUser = <TError = unknown, TContext = unknown>(options?: {
   const mutationOptions = getLoginUserMutationOptions(options)
 
   return useMutation(mutationOptions)
+}
+/**
+ * @summary 닉네임 중복확인
+ */
+export const checkNickname = (
+  params: CheckNicknameParams,
+  options?: SecondParameter<typeof customAxiosInstanceForOrval>,
+  signal?: AbortSignal,
+) => {
+  return customAxiosInstanceForOrval<NicknameDuplicateResponse>(
+    { url: `/v1/auth/check-nickname`, method: 'GET', params, signal },
+    options,
+  )
+}
+
+export const getCheckNicknameQueryKey = (params: CheckNicknameParams) => {
+  return [`/v1/auth/check-nickname`, ...(params ? [params] : [])] as const
+}
+
+export const getCheckNicknameQueryOptions = <TData = Awaited<ReturnType<typeof checkNickname>>, TError = unknown>(
+  params: CheckNicknameParams,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof checkNickname>>, TError, TData>>
+    request?: SecondParameter<typeof customAxiosInstanceForOrval>
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {}
+
+  const queryKey = queryOptions?.queryKey ?? getCheckNicknameQueryKey(params)
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof checkNickname>>> = ({ signal }) =>
+    checkNickname(params, requestOptions, signal)
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof checkNickname>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey }
+}
+
+export type CheckNicknameQueryResult = NonNullable<Awaited<ReturnType<typeof checkNickname>>>
+export type CheckNicknameQueryError = unknown
+
+/**
+ * @summary 닉네임 중복확인
+ */
+export const useCheckNickname = <TData = Awaited<ReturnType<typeof checkNickname>>, TError = unknown>(
+  params: CheckNicknameParams,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof checkNickname>>, TError, TData>>
+    request?: SecondParameter<typeof customAxiosInstanceForOrval>
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getCheckNicknameQueryOptions(params, options)
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
+
+  query.queryKey = queryOptions.queryKey
+
+  return query
 }
