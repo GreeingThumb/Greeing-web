@@ -5,10 +5,13 @@ import { Button } from '@/shared/ui/button'
 import { PageAnimation } from '@/shared/ui/page-animation'
 import { NicknameInput } from '@/features/auth/signup/ui/nickname-input'
 import type { SignupRequestDto } from '@/entities/model'
+import { SignupRequestDtoSignupType } from '@/entities/model'
 import { PasswordInput } from '@/features/auth/signup/ui/password-input'
 import useSignUp from '@/entities/auth/signup/query/useSignUp'
+import useSocialAuthStore from '@/entities/auth/signup/state/social-signup.state'
 
 const NicknamePasswordWidget = () => {
+  const socialUserInfo = useSocialAuthStore(state => state.userInfo)
   const {
     formState: { isValid },
     handleSubmit,
@@ -17,7 +20,16 @@ const NicknamePasswordWidget = () => {
   const { signUp, isLoading } = useSignUp()
 
   const onSubmit = (data: SignupRequestDto) => {
-    signUp(data)
+    signUp({
+      ...data,
+      ...(socialUserInfo.signupType === SignupRequestDtoSignupType.SOCIAL && {
+        temporaryToken: socialUserInfo.temporaryToken,
+        socialPlatformType: socialUserInfo.oauthProvider,
+        socialAccountEmail: socialUserInfo.email,
+        signupType: socialUserInfo.signupType,
+        providerId: socialUserInfo.uniqueIdentificationValue,
+      }),
+    })
   }
 
   return (

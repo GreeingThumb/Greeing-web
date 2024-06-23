@@ -28,20 +28,25 @@ const useFunnel = ({ initialStep, stepParamName = 'step' }: UseFunnelOptions) =>
   const queryStep = params.get(stepParamName) || initialStep
 
   useEffect(() => {
+    const urlParams = new URLSearchParams(params.toString())
     if (!queryStep) {
-      router.replace(`${pathname}?${stepParamName}=${initialStep}`)
+      urlParams.set(stepParamName, initialStep)
+      router.replace(`${pathname}?${urlParams.toString()}`)
     } else {
-      router.replace(`${pathname}?${stepParamName}=${queryStep}`)
+      urlParams.set(stepParamName, queryStep)
+      router.replace(`${pathname}?${urlParams.toString()}`)
       setCurrentStep(queryStep)
     }
-  }, [initialStep, queryStep, pathname]) // pathname 및 stepParamName 추가
+  }, [initialStep, queryStep, pathname])
 
   const setNextStep = useCallback(
     (nextStep: string) => {
+      const urlParams = new URLSearchParams(params.toString())
+      urlParams.set(stepParamName, nextStep)
       setCurrentStep(nextStep)
-      router.push(`${pathname}?${stepParamName}=${nextStep}`) // URL을 다음 단계로 업데이트
+      router.push(`${pathname}?${urlParams.toString()}`)
     },
-    [currentStep, pathname, stepParamName], // queryStep 의존성 제거
+    [currentStep, pathname, stepParamName],
   )
   const Funnel = useCallback(
     ({ children }: FunnelProps) => {
