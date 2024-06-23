@@ -20,10 +20,10 @@ export const createLayoutConfig = (config: LayoutConfig): LayoutConfig => ({
   isFooter: config.isFooter ?? false,
   isBottomNav: config.isBottomNav ?? false,
   header: {
-    isLogo: config.header.isLogo ?? false,
-    isBack: config.header.isBack ?? false,
-    title: config.header.title ?? '',
-    rightIcon: config.header.rightIcon,
-    rightIconClick: config.header.rightIconClick,
+    isLogo: config.header?.isLogo ?? false,
+    isBack: config.header?.isBack ?? false,
+    title: config.header?.title ?? '',
+    rightIcon: config.header?.rightIcon,
+    rightIconClick: config.header?.rightIconClick,
   },
 })

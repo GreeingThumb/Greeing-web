@@ -1,9 +1,8 @@
-import { Suspense } from 'react'
-import SignUpPage from '../../../views/auth/signup'
+import AuthView from '@/views/auth'
 import { PageLayout } from '@/widgets/page-layout'
 import { createLayoutConfig } from '@/shared/utils/layout/createLayoutConfig'
 
-const SignUp = async () => {
+const AuthPage = () => {
   const config = createLayoutConfig({
     isHeader: true,
     header: {
@@ -12,11 +11,9 @@ const SignUp = async () => {
   })
   return (
     <PageLayout config={config}>
-      <Suspense>
-        <SignUpPage />
-      </Suspense>
+      <AuthView />
     </PageLayout>
   )
 }
 
-export default SignUp
+export default AuthPage
