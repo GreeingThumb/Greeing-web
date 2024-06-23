@@ -1,6 +1,6 @@
-import AuthView from '@/views/auth'
 import { PageLayout } from '@/widgets/page-layout'
 import { createLayoutConfig } from '@/shared/utils/layout/createLayoutConfig'
+import { AuthView } from '@/views/auth'
 
 const AuthPage = () => {
   const config = createLayoutConfig({
