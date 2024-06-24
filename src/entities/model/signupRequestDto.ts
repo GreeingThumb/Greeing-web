@@ -7,6 +7,8 @@
  */
 import type { SignupRequestDtoGardeningExperience } from './signupRequestDtoGardeningExperience'
 import type { SignupRequestDtoRole } from './signupRequestDtoRole'
+import type { SignupRequestDtoSignupType } from './signupRequestDtoSignupType'
+import type { SignupRequestDtoSocialPlatformType } from './signupRequestDtoSocialPlatformType'
 
 export interface SignupRequestDto {
   email: string
@@ -24,6 +26,11 @@ export interface SignupRequestDto {
    */
   password: string
   personalInfoConsent: boolean
+  providerId?: string
   role: SignupRequestDtoRole
   serviceConsent: boolean
+  signupType: SignupRequestDtoSignupType
+  socialAccountEmail?: string
+  socialPlatformType?: SignupRequestDtoSocialPlatformType
+  temporaryToken?: string
 }

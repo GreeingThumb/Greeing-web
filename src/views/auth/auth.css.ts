@@ -34,6 +34,7 @@ export const linWrapper = style({
   width: '100%',
   justifyContent: 'center',
   gap: '12px',
+  marginTop: '24px',
 })
 
 export const authLink = style({
