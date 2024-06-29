@@ -5,13 +5,7 @@
  * OpenAPI3 - Greeing Swagger UI
  * OpenAPI spec version: 1.0.0
  */
-import type { AuthenticatedResponseRole } from './authenticatedResponseRole'
+import type { AuthResultWrapperResponse } from './authResultWrapperResponse'
+import type { AuthenticatedResponseAllOf } from './authenticatedResponseAllOf'
 
-export interface AuthenticatedResponse {
-  accessToken: string
-  email: string
-  nickname: string
-  refreshToken: string
-  role: AuthenticatedResponseRole
-  userId: number
-}
+export type AuthenticatedResponse = AuthResultWrapperResponse & AuthenticatedResponseAllOf

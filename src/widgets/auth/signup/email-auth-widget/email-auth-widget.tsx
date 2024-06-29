@@ -5,9 +5,9 @@ import { Button } from '../../../../shared/ui/button'
 import { PageAnimation } from '@/shared/ui/page-animation'
 import { SignupPageTitle } from '@/entities/auth/signup/ui/signup-page-title'
 import { emailAuthContentWrapper } from './email-auth-widget.css'
-import type { SignUpFunnelActions } from '@/views/signup'
 import { SendEmailVerification } from '@/features/auth/signup/ui/send-email-verification'
 import { AuthenticateEmailCode } from '@/features/auth/signup/ui/authenticate-email-code'
+import type { SignUpFunnelActions } from '@/views/auth/signup/signup-view'
 
 const EmailAuthWidget = ({ onNextButtonClick }: SignUpFunnelActions) => {
   const [isEmailSend, setIsEmailSend] = useState(false)

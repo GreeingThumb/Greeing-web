@@ -5,14 +5,26 @@
  * OpenAPI3 - Greeing Swagger UI
  * OpenAPI spec version: 1.0.0
  */
-import { useMutation } from '@tanstack/react-query'
-import type { MutationFunction, UseMutationOptions, UseMutationResult } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import type {
-  AuthenticatedResponse,
+  MutationFunction,
+  QueryFunction,
+  QueryKey,
+  UseMutationOptions,
+  UseMutationResult,
+  UseQueryOptions,
+  UseQueryResult,
+} from '@tanstack/react-query'
+import type {
+  AuthenticationResponse,
+  CheckNicknameParams,
   EmailVerificationRequestDto,
   EmailVerificationResponse,
   EmailVerificationSendResponse,
+  KakaoLoginRequest,
+  LoginKakao200,
   LoginRequestDto,
+  NicknameDuplicateResponse,
   SignupRequestDto,
   SignupResponse,
 } from '../../model'
@@ -166,7 +178,7 @@ export const useVerifyEmailCode = <TError = unknown, TContext = unknown>(options
  * @summary 리프레쉬 토큰 이용해서 액세스 토큰 갱신
  */
 export const refreshAccessToken = (options?: SecondParameter<typeof customAxiosInstanceForOrval>) => {
-  return customAxiosInstanceForOrval<AuthenticatedResponse>({ url: `/v1/auth/token/refresh`, method: 'POST' }, options)
+  return customAxiosInstanceForOrval<AuthenticationResponse>({ url: `/v1/auth/token/refresh`, method: 'POST' }, options)
 }
 
 export const getRefreshAccessTokenMutationOptions = <TError = unknown, TContext = unknown>(options?: {
@@ -247,7 +259,7 @@ export const loginUser = (
   loginRequestDto: LoginRequestDto,
   options?: SecondParameter<typeof customAxiosInstanceForOrval>,
 ) => {
-  return customAxiosInstanceForOrval<AuthenticatedResponse>(
+  return customAxiosInstanceForOrval<AuthenticationResponse>(
     { url: `/v1/auth/login`, method: 'POST', headers: { 'Content-Type': 'application/json' }, data: loginRequestDto },
     options,
   )
@@ -282,4 +294,107 @@ export const useLoginUser = <TError = unknown, TContext = unknown>(options?: {
   const mutationOptions = getLoginUserMutationOptions(options)
 
   return useMutation(mutationOptions)
+}
+/**
+ * @summary 카카오 로그인
+ */
+export const loginKakao = (
+  kakaoLoginRequest: KakaoLoginRequest,
+  options?: SecondParameter<typeof customAxiosInstanceForOrval>,
+) => {
+  return customAxiosInstanceForOrval<LoginKakao200>(
+    { url: `/v1/auth/kakao`, method: 'POST', headers: { 'Content-Type': 'application/json' }, data: kakaoLoginRequest },
+    options,
+  )
+}
+
+export const getLoginKakaoMutationOptions = <TError = unknown, TContext = unknown>(options?: {
+  mutation?: UseMutationOptions<Awaited<ReturnType<typeof loginKakao>>, TError, { data: KakaoLoginRequest }, TContext>
+  request?: SecondParameter<typeof customAxiosInstanceForOrval>
+}): UseMutationOptions<Awaited<ReturnType<typeof loginKakao>>, TError, { data: KakaoLoginRequest }, TContext> => {
+  const { mutation: mutationOptions, request: requestOptions } = options ?? {}
+
+  const mutationFn: MutationFunction<Awaited<ReturnType<typeof loginKakao>>, { data: KakaoLoginRequest }> = props => {
+    const { data } = props ?? {}
+
+    return loginKakao(data, requestOptions)
+  }
+
+  return { mutationFn, ...mutationOptions }
+}
+
+export type LoginKakaoMutationResult = NonNullable<Awaited<ReturnType<typeof loginKakao>>>
+export type LoginKakaoMutationBody = KakaoLoginRequest
+export type LoginKakaoMutationError = unknown
+
+/**
+ * @summary 카카오 로그인
+ */
+export const useLoginKakao = <TError = unknown, TContext = unknown>(options?: {
+  mutation?: UseMutationOptions<Awaited<ReturnType<typeof loginKakao>>, TError, { data: KakaoLoginRequest }, TContext>
+  request?: SecondParameter<typeof customAxiosInstanceForOrval>
+}): UseMutationResult<Awaited<ReturnType<typeof loginKakao>>, TError, { data: KakaoLoginRequest }, TContext> => {
+  const mutationOptions = getLoginKakaoMutationOptions(options)
+
+  return useMutation(mutationOptions)
+}
+/**
+ * @summary 닉네임 중복확인
+ */
+export const checkNickname = (
+  params: CheckNicknameParams,
+  options?: SecondParameter<typeof customAxiosInstanceForOrval>,
+  signal?: AbortSignal,
+) => {
+  return customAxiosInstanceForOrval<NicknameDuplicateResponse>(
+    { url: `/v1/auth/check-nickname`, method: 'GET', params, signal },
+    options,
+  )
+}
+
+export const getCheckNicknameQueryKey = (params: CheckNicknameParams) => {
+  return [`/v1/auth/check-nickname`, ...(params ? [params] : [])] as const
+}
+
+export const getCheckNicknameQueryOptions = <TData = Awaited<ReturnType<typeof checkNickname>>, TError = unknown>(
+  params: CheckNicknameParams,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof checkNickname>>, TError, TData>>
+    request?: SecondParameter<typeof customAxiosInstanceForOrval>
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {}
+
+  const queryKey = queryOptions?.queryKey ?? getCheckNicknameQueryKey(params)
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof checkNickname>>> = ({ signal }) =>
+    checkNickname(params, requestOptions, signal)
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof checkNickname>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey }
+}
+
+export type CheckNicknameQueryResult = NonNullable<Awaited<ReturnType<typeof checkNickname>>>
+export type CheckNicknameQueryError = unknown
+
+/**
+ * @summary 닉네임 중복확인
+ */
+export const useCheckNickname = <TData = Awaited<ReturnType<typeof checkNickname>>, TError = unknown>(
+  params: CheckNicknameParams,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof checkNickname>>, TError, TData>>
+    request?: SecondParameter<typeof customAxiosInstanceForOrval>
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } => {
+  const queryOptions = getCheckNicknameQueryOptions(params, options)
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & { queryKey: QueryKey }
+
+  query.queryKey = queryOptions.queryKey
+
+  return query
 }

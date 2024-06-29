@@ -2,9 +2,9 @@ import { useFormContext } from 'react-hook-form'
 import { SignupPageTitle } from '@/entities/auth/signup/ui/signup-page-title'
 import { Checkbox } from '@/shared/ui/checkbox'
 import { Button } from '@/shared/ui/button'
-import type { SignUpFunnelActions } from '@/views/signup'
 import { PageAnimation } from '@/shared/ui/page-animation'
 import { checkboxWrapper } from '@/widgets/auth/signup/signup-agree-widget/signup-agree-widget.css'
+import type { SignUpFunnelActions } from '@/views/auth/signup/signup-view'
 
 const checkboxConfig = [
   { name: 'serviceConsent', label: '[필수] 서비스 이용약관 동의' },

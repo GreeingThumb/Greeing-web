@@ -1,5 +1,4 @@
-import { useFormContext } from 'react-hook-form'
-import { EmailInput } from '@/entities/auth/signup/ui/email-input'
+import { Controller, useFormContext } from 'react-hook-form'
 import useSendEmailCode from '@/entities/auth/signup/query/useSendEmailCode'
 import { Button } from '@/shared/ui/button'
 import {
@@ -7,6 +6,8 @@ import {
   sendEmailInfoStyle,
 } from '@/features/auth/signup/ui/send-email-verification/send-email-verification.css'
 import { TextMessage } from '@/shared/ui/text-message'
+import { validateEmail } from '@/shared/utils/validateRules/validateEmail'
+import { Input } from '@/shared/ui/input'
 
 interface SendEmailVerificationProps {
   isEmailSend: boolean
@@ -32,7 +33,14 @@ const SendEmailVerification = ({ isEmailSend, handleSendEmail }: SendEmailVerifi
   return (
     <>
       <div className={inputButtonWrapper}>
-        <EmailInput control={control} isError={isError} />
+        <Controller
+          control={control}
+          name="email"
+          rules={{
+            validate: validateEmail,
+          }}
+          render={({ field }) => <Input placeholder="이메일" isError={isError} {...field} />}
+        />
         <Button variant="contained" disabled={isError || !email} onClick={handleSendButtonClick}>
           {isEmailSend ? '재전송' : '인증받기'}
         </Button>
